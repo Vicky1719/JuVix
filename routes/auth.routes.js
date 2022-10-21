@@ -99,12 +99,24 @@ router.post("/login", async (req, res, next)=>{
             })
             return;
         }
-    }
-    catch(err){
-       next(err) 
-    }
 
-})
+    // implementar sistema de sesion y abrir una sesión para usuario
+    req.session.activeUser = foundUser;
+
+    req.session.save(()=>{
+        res.redirect("/profile")
+    })
+    }catch (err){ 
+    next(err)
+    }
+    })
+
+    //GET "/auth/logout" => cerrar sesión
+    router.get("/logout", (req, res, next) => {
+        req.session.destroy(() => {
+            res.redirect("/")
+        })
+    })
 
 
 
