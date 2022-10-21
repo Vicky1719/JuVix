@@ -13,7 +13,12 @@ const supplierSchema = new Schema({
       ref: "User",
     },
   ],
-});
+},
+
+  {
+    timestamps: true,
+  }
+);
 
 const Supplier = model("Supplier", supplierSchema);
 
