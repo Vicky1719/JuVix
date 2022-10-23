@@ -29,10 +29,10 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 //     if(req.session.activeUser === undefined) {
 //         res.locals.isUserActive = false
 //     } else {
-//         res.locals.isUserActive = true
-//     }
-//     next ()
-// })
+//          res.locals.isUserActive = true
+//      }
+//      next ()
+//  })
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

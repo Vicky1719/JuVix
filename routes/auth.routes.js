@@ -11,7 +11,7 @@ router.get("/signup", (req, res, next) => {
 
 // POST "/auth/signup" => recibir la info del formulario y crear el perfil en la BD
 router.post("/signup", async (req, res, next) => {
-    const { firstName, lastName, username, email, password, photoUser } = req.body
+    const { firstName, lastName, username, email, password } = req.body
 
     // todos los campos deben estar llenos
     if (firstName === "" || lastName === "" || username === "" || email === "" || password === "") {
@@ -38,7 +38,18 @@ router.post("/signup", async (req, res, next) => {
                 errorMessage: "Este usuario ya existe"
             })
             return;
+
         }
+        try {
+            //validación para que el email sea único   
+            const foundUser = await User.findOne({ email: email })
+            if (foundUser !== null) {
+                res.render("auth/signup.hbs", {
+                    errorMessage: "Este email ya existe"
+                })
+                return;
+    
+            }
 
         // elemento de seguridad
         const salt = await bcrypt.genSalt(10)
@@ -51,15 +62,23 @@ router.post("/signup", async (req, res, next) => {
             username: username,
             email: email,
             password: hashPassword,
-            photoUser: photoUser
+    
+         //   photoUser: photoUser
         }
 
         await User.create(newUser)
         res.redirect("/auth/login")
 
-    } catch (err) {
+    }catch (err) {
+
+
         next(err)
     }
+}catch (err) {
+
+
+    next(err)
+}
 })
 
 //GET "/auth/login" => renderizar la vista del formulario de acceso
@@ -102,7 +121,7 @@ router.post("/login", async (req, res, next) => {
         req.session.activeUser = foundUser;
 
         req.session.save(() => {
-            res.redirect("/profile")
+            res.redirect("profile/my-profile")
         })
     } catch (err) {
         next(err)

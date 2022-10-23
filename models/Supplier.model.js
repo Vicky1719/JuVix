@@ -7,7 +7,7 @@ const supplierSchema = new Schema({
   location: {
     type: String,
   },
-  admin: [
+  administrador: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",

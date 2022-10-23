@@ -16,7 +16,7 @@ const productSchema = new Schema({
       ref: "Supplier",
     },
   ],
-  admin: [
+  administrador: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
