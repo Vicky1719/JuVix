@@ -24,6 +24,16 @@ const projectName = "JuVix";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+// ejecutar el middleware de variables locales para cada ruta que intente acceder el usuario registrado
+// app.use((req, res, next) => {
+//     if(req.session.activeUser === undefined) {
+//         res.locals.isUserActive = false
+//     } else {
+//         res.locals.isUserActive = true
+//     }
+//     next ()
+// })
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);

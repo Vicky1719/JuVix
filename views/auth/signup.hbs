@@ -4,16 +4,22 @@
 
   <form action="/auth/signup" method="POST">
 
-    <label for="username">Usuario:</label>
-    <input type="text" name="username" />
+    <label for="firstName">Nombre:</label>
+    <input type="text" name="firstName">
+    <br>
+    <label for="lastName">Apellidos:</label>
+    <input type="text" name="lastName">
     <br />
+    <label for="username">Nombre de usuario:</label>
+    <input type="text" name="username" />
+    <br>
     <label for="password">Contraseña:</label>
     <input type="password" name="password" />
     <br />
 
     <p style="color: rgb(60, 11, 151)">{{errorMessage}}</p>
 
-    <button>Registrar</button>
+    <button>Crear cuenta</button>
 
   </form>
 

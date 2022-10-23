@@ -11,11 +11,10 @@ router.get("/signup", (req, res, next) => {
 
 // POST "/auth/signup" => recibir la info del formulario y crear el perfil en la BD
 router.post("/signup", async (req, res, next) => {
-    const {firstName, lastName, username, email, password, role, photoUser} = req.body
-    console.log(req.body)
+    const { firstName, lastName, username, email, password, photoUser } = req.body
 
     // todos los campos deben estar llenos
-    if(firstName ==="" || lastName ==="" || username ==="" || email ==="" || password ===""){
+    if (firstName === "" || lastName === "" || username === "" || email === "" || password === "") {
         res.render("auth/signup.hbs", {
             errorMessage: "Rellena todos los campos"
         })
@@ -31,35 +30,34 @@ router.post("/signup", async (req, res, next) => {
         return;
     }
 
-    try{
-     //validación para que el usuario sea único   
-     const foundUser = await User.findOne({username:username})
-     if(foundUser !== null){
-        res.render("auth/signup.hbs", {
-            errorMessage:"Este usuario ya existe"
-        })
-        return;
-     }
+    try {
+        //validación para que el usuario sea único   
+        const foundUser = await User.findOne({ username: username })
+        if (foundUser !== null) {
+            res.render("auth/signup.hbs", {
+                errorMessage: "Este usuario ya existe"
+            })
+            return;
+        }
 
-     // elemento de seguridad
-     const salt = await bcrypt.genSalt(10)
-     const hashPassword = await bcrypt.hash(password,salt)
+        // elemento de seguridad
+        const salt = await bcrypt.genSalt(10)
+        const hashPassword = await bcrypt.hash(password, salt)
 
-     // crear perfil del usuario
-     const newUser = {
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        email: email,
-        password: hashPassword,
-        photoUser: photoUser
-     }
+        // crear perfil del usuario
+        const newUser = {
+            firstName: firstName,
+            lastName: lastName,
+            username: username,
+            email: email,
+            password: hashPassword,
+            photoUser: photoUser
+        }
 
-     await User.create(newUser)
-     res.redirect("/auth/login")
+        await User.create(newUser)
+        res.redirect("/auth/login")
 
-    }
-    catch(err){
+    } catch (err) {
         next(err)
     }
 })
@@ -70,20 +68,20 @@ router.get("/login", (req, res, next) => {
 })
 
 //POST "/auth/login" => validación del usuario y acceso
-router.post("/login", async (req, res, next)=>{
-    const{username, password} = req.body
+router.post("/login", async (req, res, next) => {
+    const { username, password } = req.body
 
-    if(username ==="" || password === ""){
+    if (username === "" || password === "") {
         res.render("auth/login.hbs", {
             errorMessage: "Rellena todos los campos"
         })
         return;
     }
 
-    try{
+    try {
         // verificar el usuario
-        const foundUser = await User.findOne({username:username})
-        if(foundUser === null){
+        const foundUser = await User.findOne({ username: username })
+        if (foundUser === null) {
             res.render("auth/login.hbs", {
                 errorMessage: "Usuario o contraseña incorrecto"
             })
@@ -93,32 +91,31 @@ router.post("/login", async (req, res, next)=>{
         // verificar la contraseña
         const isPasswordValid = await bcrypt.compare(password, foundUser.password)
 
-        if(isPasswordValid === false){
-            res.render ("auth/login.hbs", {
-                errorMessage:"Usuario o contraseña incorrecto"
+        if (isPasswordValid === false) {
+            res.render("auth/login.hbs", {
+                errorMessage: "Usuario o contraseña incorrecto"
             })
             return;
         }
 
-    // implementar sistema de sesion y abrir una sesión para usuario
-    req.session.activeUser = foundUser;
+        // implementar sistema de sesion y abrir una sesión para usuario
+        req.session.activeUser = foundUser;
 
-    req.session.save(()=>{
-        res.redirect("/profile")
-    })
-    }catch (err){ 
-    next(err)
-    }
-    })
-
-    //GET "/auth/logout" => cerrar sesión
-    router.get("/logout", (req, res, next) => {
-        req.session.destroy(() => {
-            res.redirect("/")
+        req.session.save(() => {
+            res.redirect("/profile")
         })
+    } catch (err) {
+        next(err)
+    }
+})
+
+//GET "/auth/logout" => cerrar sesión
+router.get("/logout", (req, res, next) => {
+
+    req.session.destroy(() => {
+        res.redirect("/")
     })
-
-
+})
 
 
 

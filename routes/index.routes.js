@@ -7,17 +7,18 @@ router.get("/", (req, res, next) => {
 });
 
 // rutas
-const productRoutes = require("./product.routes.js")
-router.use("/product", productRoutes)
+const authRoutes = require("./auth.routes")
+router.use("/auth", authRoutes)
 
-const profileRoutes = require("./profile.routes.js")
+const profileRoutes = require("./profile.routes")
 router.use("/profile", profileRoutes)
 
-const supplierRoutes = require("./supplier.routes.js")
+const productRoutes = require("./product.routes")
+router.use("/product", productRoutes)
+
+const supplierRoutes = require("./supplier.routes")
 router.use("/supplier", supplierRoutes)
 
-const authRoutes = require("./auth.routes.js")
-router.use("/auth", authRoutes)
 
 
 module.exports = router;
