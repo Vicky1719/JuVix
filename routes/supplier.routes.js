@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Supplier = require("../models/Supplier.model");
 
-//GET"/supplier/create"
+
 
 router.get("/create", (req, res, next) => {
     res.render("supplier/create.hbs")
@@ -19,6 +19,5 @@ router.post("/create", async (req, res, next) => {
         res.redirect("/supplier")
     }catch(error) {
         next(error)
-    }
-})
+    }})
 module.exports = router;
