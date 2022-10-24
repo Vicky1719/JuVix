@@ -31,25 +31,16 @@ router.post("/signup", async (req, res, next) => {
     }
 
     try {
-        //validación para que el usuario sea único   
-        const foundUser = await User.findOne({ username: username })
+        //validación para que el usuario y el email sean únicos   
+        const foundUser = await User.findOne({ $or:[{username: username }, {email: email}]})
         if (foundUser !== null) {
             res.render("auth/signup.hbs", {
-                errorMessage: "Este usuario ya existe"
+                errorMessage: "Este usuario o email ya existen"
             })
             return;
 
         }
-        try {
-            //validación para que el email sea único   
-            const foundUser = await User.findOne({ email: email })
-            if (foundUser !== null) {
-                res.render("auth/signup.hbs", {
-                    errorMessage: "Este email ya existe"
-                })
-                return;
-    
-            }
+        
 
         // elemento de seguridad
         const salt = await bcrypt.genSalt(10)
@@ -74,11 +65,7 @@ router.post("/signup", async (req, res, next) => {
 
         next(err)
     }
-}catch (err) {
 
-
-    next(err)
-}
 })
 
 //GET "/auth/login" => renderizar la vista del formulario de acceso
@@ -121,7 +108,7 @@ router.post("/login", async (req, res, next) => {
         req.session.activeUser = foundUser;
 
         req.session.save(() => {
-            res.redirect("profile/my-profile")
+            res.redirect("/profile/my-profile")
         })
     } catch (err) {
         next(err)
