@@ -15,24 +15,34 @@ router.get("/create", async (req, res, next) => {
     next(error);
   }
 });
+
 //POST recibir información del nuevo producto
 router.post("/create", (req, res, next) => {
+
   let productAdd = {
     name: req.body.name,
     description: req.body.description,
     category: req.body.category,
-    supplier: req.body.supplier,
-    administrador: req.body.administrador,
-  };
+    supplier: req.body.supplier
+  }
+
+  Product.create(productAdd)
+  .then((response)=> {
+    console.log("producto añadido")
+    res.redirect("/")
+  })
+  .catch((error) => {
+    next(error)
+  })
 });
 
 //GET "/products" => ruta para que el usuario vea la lista de productos según categoría:maquillaje
 router.get("/:category", (req, res, next) => {
 
     let{category} = req.params
-
-    Product.findbyId(category)
-    .populate("maquillaje")
+    console.log("patata", category)
+    
+    Product.find({category:["maquillaje", "ropa", "cuidado de la piel", "estilo de vida"]})
     .then((response) => {
         res.render("product/list.hbs", {
             productCategory: response

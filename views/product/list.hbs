@@ -1,3 +1,14 @@
 <div>
-    <h1>Estilo de vida</h1>
+
+  <h3>Lista de productos</h3>
+
+  {{#each productCategory}}
+    <h5>
+      {{this.name}}
+      {{category}}
+      {{!-- <a href="/books/{{this._id}}/details">{{this.title}}</a> --}}
+      {{!-- <a href="/books/{{title}}/details">{{title}}</a> --}}
+    </h5>
+  {{/each}}
+
 </div>

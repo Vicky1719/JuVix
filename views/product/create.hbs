@@ -1,6 +1,6 @@
 <div>
     <h1>Añade un producto</h1>
-    <form action="/product/create.hbs" method="POST">
+    <form action="/product/create" method="POST">
     <label for="name">Nombre:</label>
     <input type="text" name="name">
     <br>
@@ -10,8 +10,10 @@
     <label for="category">Categoría:</label>
     <input type="text" name="category">
     <br>
-    <label for="supplier">Vendedor:</label>
-    <input type="text" name="supplier">
+    <label for="supplier" class="form-label">Vendedor:</label>
+    <select name="supplier" multiple="true" class="form-select">
+
+        <option value="">Elija vendedor</option>
     
     <button>Añadir</button>
 
