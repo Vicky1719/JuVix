@@ -2,10 +2,19 @@
 
   <h3>Formulario de Editar</h3>
 
-  <form action="" method="">
+  <form action="/profile/{{details._id}}/edit" method="POST">
 
-    <label for="username">Usuario:</label>
-    <input type="text" name="username" />
+    <label for="firstName">Nombre:</label>
+    <input type="text" name="firstName" value="{{details.firstName}}" />
+    <br />
+    <label for="lastName">Apellidos:</label>
+    <input type="text" name="lastName" value="{{details.lastName}}" />
+    <br />
+    <label for="email">Email:</label>
+    <input type="text" name="email" value="{{details.email}}" />
+    <br />
+    <label for="username">Nombre de Usuario:</label>
+    <input type="text" name="username" value="{{details.username}}"/>
     <br />
     <label for="password">Contraseña:</label>
     <input type="password" name="password" />

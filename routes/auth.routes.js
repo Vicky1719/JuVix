@@ -32,7 +32,7 @@ router.post("/signup", async (req, res, next) => {
 
     try {
         //validación para que el usuario y el email sean únicos   
-        const foundUser = await User.findOne({ $or:[{username: username }, {email: email}]})
+        const foundUser = await User.findOne({ $or: [{ username: username }, { email: email }] })
         if (foundUser !== null) {
             res.render("auth/signup.hbs", {
                 errorMessage: "Este usuario o email ya existen"
@@ -40,7 +40,7 @@ router.post("/signup", async (req, res, next) => {
             return;
 
         }
-        
+
 
         // elemento de seguridad
         const salt = await bcrypt.genSalt(10)
@@ -53,14 +53,14 @@ router.post("/signup", async (req, res, next) => {
             username: username,
             email: email,
             password: hashPassword,
-    
-         //   photoUser: photoUser
+
+            //   photoUser: photoUser
         }
 
         await User.create(newUser)
         res.redirect("/auth/login")
 
-    }catch (err) {
+    } catch (err) {
 
 
         next(err)
@@ -105,7 +105,8 @@ router.post("/login", async (req, res, next) => {
         }
 
         // implementar sistema de sesion y abrir una sesión para usuario
-        req.session.activeUser = foundUser;
+        // está activo en el momento qu einicia
+        req.session.activeUser = foundUser; // nos da la información del usuario activo  // tenemos acceso a req.session.activeUSer en cualquier ruta d mi repositorio
 
         req.session.save(() => {
             res.redirect("/profile/my-profile")
@@ -115,10 +116,6 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-
-//actualizar
-
-
 //GET "/auth/logout" => cerrar sesión
 router.get("/logout", (req, res, next) => {
 
@@ -126,8 +123,6 @@ router.get("/logout", (req, res, next) => {
         res.redirect("/")
     })
 })
-
-
 
 
 

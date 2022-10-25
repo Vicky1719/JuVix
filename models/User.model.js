@@ -25,11 +25,12 @@ const userSchema = new Schema(
       required: true,
     },
 
-    // role: {
-    //   type: String,
-    //   enum: ["user", "admin"],
-    //   default: "user",
-    // },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
+    
     photoUser: {
       type: String,
       enum: ["avatar1", "avatar2", "avatar3"],
