@@ -8,6 +8,7 @@ const productSchema = new Schema({
     type: String,
   },
   category: {
+    type: String,
     enum: ["maquillaje", "ropa", "cuidado de la piel", "estilo de vida"],
   },
   supplier: [
@@ -16,12 +17,11 @@ const productSchema = new Schema({
       ref: "Supplier",
     },
   ],
-  administrador: [
+  administrador:
     {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-  ],
 },
   {
     timestamps: true,

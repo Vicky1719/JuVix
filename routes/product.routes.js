@@ -3,13 +3,14 @@ const { get } = require("mongoose");
 const Product = require("../models/Product.model");
 const Supplier = require("../models/Supplier.model");
 
+//CREATE
 // GET para agregar producto
 
 router.get("/create", async (req, res, next) => {
   try {
-    const productList = await Product.find();
+    const vendedorList = await Supplier.find().select("name")
     res.render("product/create.hbs", {
-      productList,
+      vendedorList
     });
   } catch (error) {
     next(error);
@@ -19,11 +20,13 @@ router.get("/create", async (req, res, next) => {
 //POST recibir información del nuevo producto
 router.post("/create", (req, res, next) => {
 
+ // const vendedorList = Supplier.find().select("name")
   let productAdd = {
     name: req.body.name,
     description: req.body.description,
     category: req.body.category,
-    supplier: req.body.supplier
+    supplier: req.body.supplier,
+    administrador: req.session.activeUser._id 
   }
 
   Product.create(productAdd)
@@ -41,10 +44,10 @@ router.get("/:productCategory", (req, res, next) => {
 
     let{productCategory} = req.params
 
-    Product.find({category:["maquillaje", "ropa", "cuidado de la piel", "estilo de vida"]})
+    Product.find({category:productCategory})
     .then((response) => {
         res.render("product/list.hbs", {
-            productCategory: response
+            categoria: response
         })
     })
     .catch((error) => {
@@ -53,5 +56,8 @@ router.get("/:productCategory", (req, res, next) => {
 
 })
 
+//UPDATE
+// //GET "/product/:productCategory/edit"
+// router.get("/product")
 
 module.exports = router;

@@ -2,13 +2,13 @@
 
   <h3>Formulario de Editar</h3>
 
-  <form action="/supplier/{{details._id}}/edit" method="POST">
+  <form action="/supplier/{{supplierDetails._id}}/edit" method="POST">
 
     <label for="name">Nombre:</label>
-    <input type="text" name="name" value="{{details.name}}" />
+    <input type="text" name="name" value="{{supplierDetails.name}}" />
     <br />
     <label for="location">Ubicación:</label>
-    <input type="text" name="location" value="{{details.location}}" />
+    <input type="text" name="location" value="{{supplierDetails.location}}" />
 
     <p style="color: rgb(60, 11, 151)">{{errorMessage}}</p>
 

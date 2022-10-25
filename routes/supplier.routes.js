@@ -45,7 +45,7 @@ router.get("/:supplierId/edit", (req, res, next) => {
     Supplier.findById(supplierId)
     .then((response) => {
         res.render("supplier/edit-supplier.hbs", {
-            details: response
+            supplierDetails: response
         })
     })
     .catch((error) => {
@@ -65,7 +65,7 @@ router.post ("/:supplierId/edit", (req, res, next) => {
 
     Supplier.findByIdAndUpdate(supplierId, supplierUpdate)
     .then(()=> {
-        res.redirect(`/supplier/${supplierId}/details`)
+        res.redirect("/supplier/details")
     })
     .catch((error) => {
         next (error)
