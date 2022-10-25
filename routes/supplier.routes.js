@@ -17,7 +17,7 @@ try{
         administrador: req.session.activeUser._id
     })
 
-    res.redirect("/")
+    res.redirect("/supplier")
 } catch(error){
     next (error)
 }
