@@ -115,6 +115,10 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
+
+//actualizar
+
+
 //GET "/auth/logout" => cerrar sesión
 router.get("/logout", (req, res, next) => {
 
@@ -122,6 +126,8 @@ router.get("/logout", (req, res, next) => {
         res.redirect("/")
     })
 })
+
+
 
 
 

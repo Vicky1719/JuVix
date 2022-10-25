@@ -16,8 +16,22 @@ router.post("/create", async (req, res, next) => {
             location
         })
 
-        res.redirect("/supplier")
+        res.redirect("/")
     }catch(error) {
         next(error)
     }})
+
+
+    //GET hacer lista de vendedores
+    router.get("/", async (req, res, next) => {
+        try {
+            const supplierList= await Supplier.find()
+            res.render("supplier/list.hbs", {
+                supplierList
+            })
+        }catch (error) {
+            next(error)
+        }
+    })
+
 module.exports = router;

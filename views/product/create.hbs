@@ -1,21 +1,29 @@
 <div>
     <h1>Añade un producto</h1>
-    <form action="/product/create" method="POST">
-    <label for="name">Nombre:</label>
-    <input type="text" name="name">
+    <form action="/product/create" method="POST" >
+   
+    <label for="name" class="form-label">Nombre:</label>
+    <input type="text" name="name" class="form-control">
     <br>
-    <label for="description">Descripción:</label>
-    <input type="text" name="description">
+    <label for="description" class="form-label">Descripción:</label>
+    <input type="text" name="description" class="form-control">
     <br>
-    <label for="category">Categoría:</label>
-    <input type="text" name="category">
+    <label for="category" class="form-label" >Categoría:</label>
+    <input type="text" name="category" class="form-control">
     <br>
-    <label for="supplier" class="form-label">Vendedor:</label>
-    <select name="supplier" multiple="true" class="form-select">
+    {{!-- <label for="supplier" class="form-label">Vendedor:</label>
+    <input type="text" name="supplier" class="form-control"> --}}
+        
 
-        <option value="">Elija vendedor</option>
-    
-    <button>Añadir</button>
+
+        {{!-- <option value="">Elija vendedor</option>
+
+        {{#each supplierList}}
+        <option value="{{name}}">{{this.name}}</option>
+    {{/each}}
+
+    </select> --}}
+    <button type="submit">Añadir</button>
 
     </form>
 </div>
