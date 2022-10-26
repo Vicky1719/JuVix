@@ -61,7 +61,7 @@ router.get("/:productCategory", (req, res, next) => {
 router.get("/", async (req, res, next) => {
 
   try{
-      const productList = await Product.find()
+      const productList = await Product.find().select("name")
       res.render("product/list.hbs", {
           productList
       })
@@ -70,12 +70,21 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+
+
 //UPDATE
 //GET "/product/:productId/edit
 router.get("/:productId/edit", async (req, res, next) => {
   const { productId } = req.params
 
   try{
+    const detallesProducto = await Product.findById(productId)
+    const vendedorList =  await Supplier.find()
+    res.render("product/edit-product.hbs", {
+      vendedorList,
+detallesProducto
+        })
+   
    
 
   } catch(error) {
