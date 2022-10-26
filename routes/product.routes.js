@@ -60,13 +60,13 @@ router.get("/:productCategory", (req, res, next) => {
 //GET "/product" -> listar los productos de la BD
 router.get("/", async (req, res, next) => {
 
-  try{
-      const productList = await Product.find().select("name")
-      res.render("product/list.hbs", {
-          productList
-      })
-  } catch(error){
-      next (error)
+  try {
+    const productList = await Product.find().select("name")
+    res.render("product/list.hbs", {
+      productList
+    })
+  } catch (error) {
+    next(error)
   }
 })
 
@@ -77,19 +77,19 @@ router.get("/", async (req, res, next) => {
 router.get("/:productId/edit", async (req, res, next) => {
   const { productId } = req.params
 
-  try{
+  try {
     const detallesProducto = await Product.findById(productId)
-    const vendedorList =  await Supplier.find()
+    const vendedorList = await Supplier.find()
     res.render("product/edit-product.hbs", {
       vendedorList,
-detallesProducto
-        })
-   
-   
+      detallesProducto
+    })
 
-  } catch(error) {
-      next(error)
-    }
+
+
+  } catch (error) {
+    next(error)
+  }
 })
 
 //POST "product/:productId/edit"
@@ -106,7 +106,7 @@ router.post("/:productId/edit", (req, res, next) => {
   }
 
   Product.findByIdAndUpdate(productId, productUpdate)
-      .then(() => {
+    .then(() => {
       res.redirect("/product")
     })
     .catch((error) => {
@@ -127,22 +127,55 @@ router.post("/:productId/delete", (req, res, next) => {
 
 
 
-//GET "/product"
-router.get("/product/search", (req, res, next) => {
-  const {searchProduct} = req.query
+// //GET "/product/search" 
+// router.get("/product/search", (req, res, next) => {
+//   const { searchProduct } = req.query
 
-  if(searchProduct === undefined) {
-    res.render("product/search.hbs")
-  }else{
-    Product.findOne({name: searchProduct})
-    .then((response) => {
-      res.render("product/search.hbs", {
-     details: response
-    })
-  })
-  .catch((error) => {
-    next(error)
-  })
-  }
-})
+//   if (searchProduct === undefined) {
+//     res.render("product/search.hbs")
+//   } else {
+//     Product.findOne({ name: searchProduct })
+//       .then((response) => {
+//         res.render("product/search.hbs", {
+//           details: response
+//         })
+//       })
+//       .catch((error) => {
+//         next(error)
+//       })
+//   }
+// })
+
+
+// //GET "/product/favorites"
+// router.get("/favorites",async (req, res, next) => {
+
+//   try{
+//     const favoriteList = await Product.find()
+//     .populate("favorites")
+//     console.log(favoriteList)
+//     res.render("profile/favorites.hbs", {
+//       favoriteList
+
+//     })
+//   }catch (error){
+//     next(error)
+//   }
+
+// })
+
+// //POST "/product/favorites"
+// router.post("/favorites", async (req, res, next) => {
+
+//   try{
+//     const favoriteList = await Product.find()
+//     .populate("favorites")
+//     res.redirect("profile/favorites.hbs")
+
+//     })
+//   }catch (error){
+//     next(error)
+//   }
+// })
+
 module.exports = router;

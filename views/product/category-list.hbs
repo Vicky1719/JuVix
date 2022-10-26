@@ -1,13 +1,14 @@
 <div>
 
-  <h3>Lista de productos:</h3>
+  <h3>Lista de productos_</h3>
   {{#each categoria}}
 
     <h5>
       
       <ul>
         <li>
-      {{this.name}}
+      {{this.name}} <a href="/product/favorites">♡</a>
+
       <br>
       {{this.description}}
       {{this.supplier.name}}
