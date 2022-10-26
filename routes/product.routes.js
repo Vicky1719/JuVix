@@ -72,18 +72,15 @@ router.get("/", async (req, res, next) => {
 
 //UPDATE
 //GET "/product/:productId/edit
-router.get("/:productId/edit", (req, res, next) => {
+router.get("/:productId/edit", async (req, res, next) => {
   const { productId } = req.params
 
-  Product.findById(productId)
-    .then((response) => {
-      res.render("product/edit-product.hbs", {
-        details: response
-      })
-    })
-    .catch((error) => {
+  try{
+   
+
+  } catch(error) {
       next(error)
-    })
+    }
 })
 
 //POST "product/:productId/edit"
@@ -119,4 +116,24 @@ router.post("/:productId/delete", (req, res, next) => {
     })
 })
 
+
+
+//GET "/product"
+router.get("/product/search", (req, res, next) => {
+  const {searchProduct} = req.query
+
+  if(searchProduct === undefined) {
+    res.render("product/search.hbs")
+  }else{
+    Product.findOne({name: searchProduct})
+    .then((response) => {
+      res.render("product/search.hbs", {
+     details: response
+    })
+  })
+  .catch((error) => {
+    next(error)
+  })
+  }
+})
 module.exports = router;
