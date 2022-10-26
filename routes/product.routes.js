@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { get } = require("mongoose");
 const Product = require("../models/Product.model");
 const Supplier = require("../models/Supplier.model");
+const User = require("../models/User.model");
 
 //CREATE
 // GET para agregar producto
@@ -168,12 +169,11 @@ router.post("/:productId/delete", (req, res, next) => {
 // router.post("/favorites", async (req, res, next) => {
 
 //   try{
-//     const favoriteList = await Product.find()
-//     .populate("favorites")
+//     User.findByIdAndUpdate()
 //     res.redirect("profile/favorites.hbs")
 
-//     })
-//   }catch (error){
+//     }
+//   catch (error){
 //     next(error)
 //   }
 // })
