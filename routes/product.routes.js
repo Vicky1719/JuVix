@@ -3,6 +3,7 @@ const { get } = require("mongoose");
 const Product = require("../models/Product.model");
 const Supplier = require("../models/Supplier.model");
 const User = require("../models/User.model");
+// const uploader = require("../middlewares/cloudinary.js")
 
 //GET "/product/search" 
 router.get("/search", (req, res, next) => {
@@ -41,6 +42,7 @@ router.get("/create", async (req, res, next) => {
 
 //POST recibir información del nuevo producto
 router.post("/create", (req, res, next) => {
+  // , uploader.single("image")
 
   // const vendedorList = Supplier.find().select("name")
   let productAdd = {
@@ -48,7 +50,8 @@ router.post("/create", (req, res, next) => {
     description: req.body.description,
     category: req.body.category,
     supplier: req.body.supplier,
-    administrador: req.session.activeUser._id
+    administrador: req.session.activeUser._id,
+    // image: req.file.path
   }
 
   Product.create(productAdd)

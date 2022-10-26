@@ -1,6 +1,6 @@
 <div>
     <h1>Añade un producto</h1>
-    <form action="/product/create" method="POST">
+    <form action="/product/create" method="POST" enctype="multipart/form-data">
 
         <label for="name" class="form-label">Nombre:</label>
         <input type="text" name="name" class="form-control">
@@ -27,6 +27,9 @@
         {{/each}}
 
         </select>
+
+        <label for="image">Imagen de producto</label>
+        <input type="file" name="image">
         <button>Añadir</button>
 
     </form>
