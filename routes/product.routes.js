@@ -4,6 +4,27 @@ const Product = require("../models/Product.model");
 const Supplier = require("../models/Supplier.model");
 const User = require("../models/User.model");
 
+//GET "/product/search" 
+router.get("/search", (req, res, next) => {
+  const { searchProduct } = req.query
+
+  if (searchProduct === undefined) {
+    res.render("product/search.hbs")
+  } else {
+    Product.findOne({ name: searchProduct })
+      .then((response) => {
+        console.log(response)
+        res.render("product/search.hbs", {
+          details: response
+        })
+      })
+      .catch((error) => {
+        next(error)
+      })
+  }
+})
+
+
 //CREATE
 // GET para agregar producto
 
@@ -128,24 +149,7 @@ router.post("/:productId/delete", (req, res, next) => {
 
 
 
-// //GET "/product/search" 
-// router.get("/product/search", (req, res, next) => {
-//   const { searchProduct } = req.query
 
-//   if (searchProduct === undefined) {
-//     res.render("product/search.hbs")
-//   } else {
-//     Product.findOne({ name: searchProduct })
-//       .then((response) => {
-//         res.render("product/search.hbs", {
-//           details: response
-//         })
-//       })
-//       .catch((error) => {
-//         next(error)
-//       })
-//   }
-// })
 
 
 // //GET "/product/favorites"
@@ -169,7 +173,7 @@ router.post("/:productId/delete", (req, res, next) => {
 // router.post("/favorites", async (req, res, next) => {
 
 //   try{
-//     User.findByIdAndUpdate()
+//     User.findByIdAndUpdate(session.activeUser._id)
 //     res.redirect("profile/favorites.hbs")
 
 //     }

@@ -73,4 +73,35 @@ router.post("/:userId/delete", (req, res, next) => {
 
 
 
+// //GET "/product/favorites"
+// router.get("/favorites", isLoggedIn, async (req, res, next) => {
+
+//     try{
+//       const favoriteList = await User.find()
+//       .populate("favorites")
+//       console.log(favoriteList)
+//       res.render("profile/favorites.hbs", {
+//         favoriteList
+  
+//       })
+//     }catch (error){
+//       next(error)
+//     }
+  
+//   })
+  
+//   //POST "/product/favorites"
+//   router.post("/favorites", isLoggedIn, async (req, res, next) => {
+
+//     try{
+
+//      const productoFavorito = await User.findByIdAndUpdate(session.activeUser._id)
+//       res.redirect("profile/favorites.hbs")
+  
+//       }
+//     catch (error){
+//       next(error)
+//     }
+//   })
+
 module.exports = router;
