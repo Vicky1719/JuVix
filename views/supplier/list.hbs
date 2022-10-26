@@ -4,7 +4,7 @@
     <ul>
         {{#each supplierList}}
         <li>
-            <a href="/supplier/{{supplierDetails._id}}/edit">{{this.name}}</a>
+            <a href="/supplier/{{this._id}}/edit">{{this.name}}</a>
             {{this.location}}
         </li>
         {{/each}}

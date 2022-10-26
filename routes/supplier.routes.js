@@ -65,10 +65,22 @@ router.post ("/:supplierId/edit", (req, res, next) => {
 
     Supplier.findByIdAndUpdate(supplierId, supplierUpdate)
     .then(()=> {
-        res.redirect("/supplier/details")
+        res.redirect("/supplier")
     })
     .catch((error) => {
         next (error)
     })
 })
+
+//POST "/supplier/:supplierId/delete"
+router.post("/:supplierId/delete", (req, res, next) => {
+    Supplier.findByIdAndDelete(req.params.supplierId)
+      .then(() => {
+        res.redirect("/supplier")
+      })
+      .catch((error) => {
+        next(error)
+      })
+  })
+
 module.exports = router;
