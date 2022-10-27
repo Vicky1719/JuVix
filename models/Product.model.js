@@ -22,7 +22,12 @@ const productSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+<<<<<<< HEAD
   },
+=======
+    image: String
+},
+>>>>>>> 1e28c041da7d2defd55ef29bf1042c9ca82e5826
   {
     timestamps: true,
   }

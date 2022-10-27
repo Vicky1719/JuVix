@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const { get } = require("mongoose");
+// const { get } = require("mongoose");
 const Product = require("../models/Product.model");
 const Supplier = require("../models/Supplier.model");
 const User = require("../models/User.model");
+const uploader = require("../middlewares/cloudinary.js")
 
 //GET "/product/search"
 router.get("/search", (req, res, next) => {
@@ -39,14 +40,26 @@ router.get("/create", async (req, res, next) => {
 });
 
 //POST recibir información del nuevo producto
+<<<<<<< HEAD
 router.post("/create", (req, res, next) => {
+=======
+router.post("/create", uploader.single("image"), (req, res, next) => {
+  
+
+  // const vendedorList = Supplier.find().select("name")
+>>>>>>> 1e28c041da7d2defd55ef29bf1042c9ca82e5826
   let productAdd = {
     name: req.body.name,
     description: req.body.description,
     category: req.body.category,
     supplier: req.body.supplier,
     administrador: req.session.activeUser._id,
+<<<<<<< HEAD
   };
+=======
+    image: req.file.path
+  }
+>>>>>>> 1e28c041da7d2defd55ef29bf1042c9ca82e5826
 
   Product.create(productAdd)
     .then((response) => {

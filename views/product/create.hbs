@@ -1,6 +1,11 @@
 <div>
+<<<<<<< HEAD
   <h1>Añade un producto</h1>
   <form action="/product/create" method="POST">
+=======
+    <h1>Añade un producto</h1>
+    <form action="/product/create" method="POST" enctype="multipart/form-data">
+>>>>>>> 1e28c041da7d2defd55ef29bf1042c9ca82e5826
 
     <label for="name" class="form-label">Nombre:</label>
     <input type="text" name="name" class="form-control" />
@@ -25,8 +30,16 @@
         <option value="{{this._id}}">{{this.name}}</option>
       {{/each}}
 
+<<<<<<< HEAD
     </select>
     <button>Añadir</button>
+=======
+        </select>
+
+        <label for="image">Imagen de producto</label>
+        <input type="file" name="image">
+        <button>Añadir</button>
+>>>>>>> 1e28c041da7d2defd55ef29bf1042c9ca82e5826
 
   </form>
 </div>

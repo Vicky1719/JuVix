@@ -3,6 +3,10 @@
   <h3>Formulario de Editar</h3>
 
   <form action="/profile/{{details._id}}/edit" method="POST">
+    <div>
+      <img id="user-photo">
+      <button type="button" id="btn-foto">Subir foto</button>
+    </div>
 
     <label for="firstName">Nombre:</label>
     <input type="text" name="firstName" value="{{details.firstName}}" />
