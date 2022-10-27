@@ -86,7 +86,7 @@ router.get("/:productCategory", (req, res, next) => {
 //GET "/product" -> listar los productos de la BD
 router.get("/", async (req, res, next) => {
   try {
-    const productList = await Product.find().select("name");
+    const productList = await Product.find();
     res.render("product/list.hbs", {
       productList,
     });
