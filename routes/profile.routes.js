@@ -42,10 +42,10 @@ router.get("/my-profile", isLoggedIn, (req, res, next) => {
 router.post("/favorites/:favoriteId", isLoggedIn, async (req, res, next) => {
     const {favoriteId} = req.params
     try{
-      if ( !(await User.findById(req.session.activeUser._id).populate("favorites")).favorites.some(favorite => favorite._id == favoriteId))
-      {
-        const productoFavorito = await User.findByIdAndUpdate(req.session.activeUser._id, { $push: { favorites: favoriteId}})
-      }
+     // if ( !(await User.findById(req.session.activeUser._id).populate("favorites")).favorites.some(favorite => favorite._id == favoriteId))
+    //  {
+        const productoFavorito = await User.findByIdAndUpdate(req.session.activeUser._id, { $addToSet: { favorites: favoriteId}})
+     // }
       res.redirect("/profile/favorites")
   
       }
