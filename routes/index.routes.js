@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 /* GET home page */
@@ -7,18 +7,16 @@ router.get("/", (req, res, next) => {
 });
 
 // rutas
-const authRoutes = require("./auth.routes")
-router.use("/auth", authRoutes)
+const authRoutes = require("./auth.routes");
+router.use("/auth", authRoutes);
 
-const profileRoutes = require("./profile.routes")
-router.use("/profile", profileRoutes)
+const profileRoutes = require("./profile.routes");
+router.use("/profile", profileRoutes);
 
-const productRoutes = require("./product.routes")
-router.use("/product", productRoutes)
+const productRoutes = require("./product.routes");
+router.use("/product", productRoutes);
 
-const supplierRoutes = require("./supplier.routes")
-router.use("/supplier", supplierRoutes)
-
-
+const supplierRoutes = require("./supplier.routes");
+router.use("/supplier", supplierRoutes);
 
 module.exports = router;

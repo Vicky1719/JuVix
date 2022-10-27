@@ -1,35 +1,43 @@
 <div>
-    <h1>Edita un producto</h1>
-    <form action="/product/{{detallesProducto._id}}/edit" method="POST">
+  <h1>Edita un producto</h1>
+  <form action="/product/{{detallesProducto._id}}/edit" method="POST">
 
-        <label for="name" class="form-label">Nombre:</label>
-        <input type="text" name="name" value="{{detallesProducto.name}}" class="form-control">
-        <br>
-        <label for="description" class="form-label">Descripción:</label>
-        <input type="text" name="description" value="{{detallesProducto.description}}">
-        <br>
-        <label for="category" class="form-label">Categoría:</label>
-        <select name="category" value="{{detallesProducto.category}}">
-            <option value="maquillaje">Maquillaje</option>
-            <option value="ropa">Ropa</option>
-            <option value="cuidado de la piel">Cuidado de la piel</option>
-            <option value="estilo de vida">Estilo de vida</option>
-        </select> 
-        <br>
-        <label for="supplier" class="form-label">Vendedor:</label>
-        <select name="supplier" multiple="true">
+    <label for="name" class="form-label">Nombre:</label>
+    <input
+      type="text"
+      name="name"
+      value="{{detallesProducto.name}}"
+      class="form-control"
+    />
+    <br />
+    <label for="description" class="form-label">Descripción:</label>
+    <input
+      type="text"
+      name="description"
+      value="{{detallesProducto.description}}"
+    />
+    <br />
+    <label for="category" class="form-label">Categoría:</label>
+    <select name="category" value="{{detallesProducto.category}}">
+      <option value="maquillaje">Maquillaje</option>
+      <option value="ropa">Ropa</option>
+      <option value="cuidado de la piel">Cuidado de la piel</option>
+      <option value="estilo de vida">Estilo de vida</option>
+    </select>
+    <br />
+    <label for="supplier" class="form-label">Vendedor:</label>
+    <select name="supplier" multiple="true">
 
+      <option value="">Elija vendedor</option>
 
-        <option value="">Elija vendedor</option>
-
-        {{#each vendedorList}}
+      {{#each vendedorList}}
         <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
+      {{/each}}
 
-        </select>
-        <button>Editar</button>
+    </select>
+    <button>Editar</button>
 
-    </form>
-        <form action="/product/{{detallesProducto._id}}/delete" method="POST"><button>Borrar</button></form>
+  </form>
+  <form action="/product/{{detallesProducto._id}}/delete" method="POST"><button
+    >Borrar</button></form>
 </div>
-      

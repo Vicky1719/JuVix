@@ -1,13 +1,13 @@
 <div>
-    <h1>Lista de vendedores</h1>
+  <h1>Lista de vendedores</h1>
 
-    <ul>
-        {{#each supplierList}}
-        <li>
-            <a href="/supplier/{{this._id}}/edit">{{this.name}}</a>
-            {{this.location}}
-        </li>
-        {{/each}}
-    </ul>
+  <ul>
+    {{#each supplierList}}
+      <li>
+        <a href="/supplier/{{this._id}}/edit">{{this.name}}</a>
+        {{this.location}}
+      </li>
+    {{/each}}
+  </ul>
 
 </div>

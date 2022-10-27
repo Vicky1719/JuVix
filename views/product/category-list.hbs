@@ -1,22 +1,25 @@
 <div>
 
-  <h3>Lista de productos_</h3>
+  <h3>Lista de productos</h3>
   {{#each categoria}}
 
     <h5>
-      
+
       <ul>
         <li>
-      {{this.name}} <a href="/profile/favorites">♡</a>
+          <form action="/profile/favorites/{{this._id}}" method="POST">
+            {{this.name}}
+            <input type="submit" value="♡" />
 
-      <br>
-      {{this.description}}
-      {{this.supplier.name}}
+            <br />
+            {{this.description}}
+            {{this.supplier.name}}
+
+          </form>
 
         </li>
       </ul>
-      {{!-- <a href="/books/{{this._id}}/details">{{this.title}}</a> --}}
-      {{!-- <a href="/books/{{title}}/details">{{title}}</a> --}}
+
     </h5>
   {{/each}}
 

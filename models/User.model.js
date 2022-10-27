@@ -30,20 +30,19 @@ const userSchema = new Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    
+
     photoUser: {
       type: String,
       enum: ["avatar1", "avatar2", "avatar3"],
     },
-    favorites:[
+    favorites: [
       {
-      type: Schema.Types.ObjectId,
-      ref: "Product",
-      },]
-      
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
   },
   {
-    
     timestamps: true,
   }
 );

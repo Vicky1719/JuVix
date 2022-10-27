@@ -1,5 +1,5 @@
 <div>
     <h1>Hola {{userDetails.username}} </h1>
     <a href="/profile/{{userDetails._id}}/edit">Editar perfil</a>
-    <a href="" >Favoritos</a>
+    <a href="/profile/favorites/">Favoritos</a>
     <form action="/profile/{{userDetails._id}}/delete" method="POST"><button>Borrar perfil</button></form>

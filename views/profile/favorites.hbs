@@ -1,4 +1,26 @@
 <div>
-    <h1>Estos son mis productos favoritos</h1>
-    {{favoriteList}}
+
+  <h3>Estos son mis productos favoritos</h3>
+  {{#each favoriteList}}
+
+    <h5>
+
+      <ul>
+        <li>
+          <form action="/profile/favorites/{{this._id}}/delete" method="POST">
+            <input type="submit" value="❤️" />
+          </form>
+
+          {{this.name}}
+
+          <br />
+          {{this.description}}
+          {{this.supplier.name}}
+
+        </li>
+      </ul>
+
+    </h5>
+  {{/each}}
+
 </div>

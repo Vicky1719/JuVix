@@ -1,16 +1,16 @@
 <div>
-    <h1>Lista de productos</h1>
+  <h1>Lista de productos</h1>
 
-    <ul>
-        {{#each productList}}
-        <li>
-            <a href="/product/{{this._id}}/edit">{{this.name}}</a>
-            {{this.description}}
-            <br>
-            {{this.category}}
-            {{this.supplier.name}}
-        </li>
-        {{/each}}
-    </ul>
+  <ul>
+    {{#each productList}}
+      <li>
+        <a href="/product/{{this._id}}/edit">{{this.name}}</a>
+        {{this.description}}
+        <br />
+        {{this.category}}
+        {{this.supplier.name}}
+      </li>
+    {{/each}}
+  </ul>
 
 </div>
