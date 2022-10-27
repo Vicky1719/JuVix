@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 
  
- const {isLoggedIn} = require("../middlewares/auth.middlewares.js");
+ const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js");
 const Product = require("../models/Product.model");
 
 
@@ -116,9 +116,9 @@ router.post("/:userId/delete", (req, res, next) => {
         next(error)
     })
 })
-// router.get("/admin", isLoggedIn, (req, res, next) => {
-//      res.render("profile/admin.hbs")
-//  })
+router.get("/admin-dashboard", isLoggedIn, isAdmin, (req, res, next) => {
+      res.render("profile/admin.hbs")
+ })
   
 
 module.exports = router;
