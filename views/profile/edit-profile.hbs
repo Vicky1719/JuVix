@@ -1,33 +1,65 @@
 <div>
 
-  <h3>Formulario de Editar</h3>
+  <h3>Editar mi perfil</h3>
 
   <form action="/profile/{{details._id}}/edit" method="POST">
-    <div>
-      <img id="user-photo">
-      <button type="button" id="btn-foto">Subir foto</button>
+    <div class="row">
+      <div class="col">
+        <input
+          type="text"
+          name="firstName"
+          value="{{details.firstName}}"
+          class="form-control"
+          aria-label="Nombre"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          name="lastName"
+          value="{{details.lastName}}"
+          class="form-control"
+          placeholder="Apellido"
+          aria-label="Apellido"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="mb-3">
+
+      <input
+        type="email"
+        name="email"
+        value="{{details.email}}"
+        class="form-control"
+        placeholder="Correo electrónico"
+        id="email"
+      />
+    </div>
+    <div class="mb-3">
+
+      <input
+        type="text"
+        name="username"
+        value="{{details.username}}"
+        class="form-control"
+        placeholder="Nombre de usuario"
+        id="username"
+      />
+    </div>
+    <div class="mb-3">
+
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        placeholder="Contraseña"
+        id="password"
+      />
     </div>
 
-    <label for="firstName">Nombre:</label>
-    <input type="text" name="firstName" value="{{details.firstName}}" />
-    <br />
-    <label for="lastName">Apellidos:</label>
-    <input type="text" name="lastName" value="{{details.lastName}}" />
-    <br />
-    <label for="email">Email:</label>
-    <input type="text" name="email" value="{{details.email}}" />
-    <br />
-    <label for="username">Nombre de Usuario:</label>
-    <input type="text" name="username" value="{{details.username}}" />
-    <br />
-    <label for="password">Contraseña:</label>
-    <input type="password" name="password" />
-    <br />
-
     <p style="color: rgb(60, 11, 151)">{{errorMessage}}</p>
-
-    <button>Editar</button>
-
+    <button class="btn btn-primary">Guardar</button>
   </form>
-
+</div>
 </div>

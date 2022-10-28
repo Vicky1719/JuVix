@@ -1,35 +1,39 @@
 <div>
-    <h1>Añade un producto</h1>
-    <form action="/product/create" method="POST" enctype="multipart/form-data">
+  <h3>AÑADE UN PRODUCTO</h3>
 
-    <label for="name" class="form-label">Nombre:</label>
-    <input type="text" name="name" class="form-control" />
-    <br />
-    <label for="description" class="form-label">Descripción:</label>
-    <input type="text" name="description" class="form-control" />
-    <br />
-    <label for="category" class="form-label">Categoría:</label>
-    <select name="category" class="form-select">
-      <option value="maquillaje">Maquillaje</option>
-      <option value="ropa">Ropa</option>
-      <option value="cuidado-de-la-piel">Cuidado de la piel</option>
-      <option value="estilo-de-vida">Estilo de vida</option>
-    </select>
-    <br />
-    <label for="supplier" class="form-label">Vendedor:</label>
-    <select name="supplier" multiple="true" class="form-select">
-
-      <option value="">Elija vendedor</option>
-
-      {{#each vendedorList}}
-        <option value="{{this._id}}">{{this.name}}</option>
-      {{/each}}
-
+  <form action="/product/create" method="POST" enctype="multipart/form-data">
+    <div class="col">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre:</label>
+        <input type="text" name="name" class="form-control" id="name">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción:</label>
+        <input type="text" name="description" class="form-control"  id="description">
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Categoría:</label>
+        <select name="category" class="form-select" aria-label="Default select example">
+          <option selected>Elije una categoría</option>
+          <option value="maquillaje">Maquillaje</option>
+          <option value="ropa">Ropa</option>
+          <option value="cuidado-de-la-piel">Cuidado de la piel</option>
+          <option value="estilo-de-vida">Estilo de vida</option>
         </select>
-
-        <label for="image">Imagen de producto</label>
-        <input type="file" name="image">
-        <button>Añadir</button>
-
+      </div>
+      <div class="mb-3">
+        <label for="supplier" class="form-label">Vendedor:</label>
+        <select name="supplier" multiple="true" class="form-select">
+          <option selected>Elija vendedor</option>
+          {{#each vendedorList}}
+          <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Imagen de producto</label>
+        <input name="image" class="form-control form-control-sm" id="formFileSm" type="file">
+      </div>
+      <button class="btn btn-primary">Añadir</button>
   </form>
 </div>

@@ -1,14 +1,18 @@
 <div>
-  <h1>Añade una tienda</h1>
+  <h3>Añade una tienda</h3>
+
   <form action="/supplier/create" method="POST">
-
-    <label for="name">Nombre:</label>
-    <input type="text" name="name" />
-    <br />
-    <label for="location">Ubicación:</label>
-    <input type="text" name="location" />
-    <br />
-    <button>Añadir</button>
-
+    <div class="row">
+      <div class="col">
+        <input type="text" name="name" class="form-control" placeholder="Nombre de empresa" aria-label="Nombre">
+      </div>
+      <div class="col">
+        <input type="text" name="location" class="form-control" placeholder="Ubicación" aria-label="Ubicación">
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary">Añadir</button>
   </form>
+
+
 </div>

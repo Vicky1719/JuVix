@@ -1,26 +1,23 @@
-<div>
-
-  <h3>Estos son mis productos favoritos</h3>
+  <h3>Mis favoritos</h3>
   {{#each favoriteList}}
 
-    <h5>
+  <form action="/profile/favorites/{{this._id}}/delete" method="POST">
 
-      <ul>
-        <li>
-          <form action="/profile/favorites/{{this._id}}/delete" method="POST">
-            <input type="submit" value="❤️" />
+
+  <div class="card" style="width: 18rem;">
+  <img src={{this.image}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <p>{{this.supplier.name}}</p>
+            <input type="submit" value="❤" />
+  </div>
+</div>
+
+
           </form>
 
-          {{this.name}}
 
-          <br />
-          {{this.description}}
-          {{this.supplier.name}}
-
-        </li>
-      </ul>
-
-    </h5>
   {{/each}}
 
 </div>
