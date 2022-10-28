@@ -1,47 +1,47 @@
 <div>
-  <h1>Edita un producto</h1>
+  <h3>EDITA UN PRODUCTO</h3>
   <form action="/product/{{detallesProducto._id}}/edit" method="POST">
 
-    <label for="name" class="form-label">Nombre:</label>
-    <input
-      type="text"
-      name="name"
-      value="{{detallesProducto.name}}"
-      class="form-control"
-    />
-    <br />
-    <label for="description" class="form-label">Descripción:</label>
-    <input
-      type="text"
-      name="description"
-      value="{{detallesProducto.description}}"
-    />
-    <br />
-    <label for="category" class="form-label">Categoría:</label>
-    <select name="category" value="{{detallesProducto.category}}">
-      <option value="maquillaje">Maquillaje</option>
-      <option value="ropa">Ropa</option>
-      <option value="cuidado de la piel">Cuidado de la piel</option>
-      <option value="estilo de vida">Estilo de vida</option>
-    </select>
-    <br />
-    <label for="supplier" class="form-label">Vendedor:</label>
-    <select name="supplier" multiple="true">
-
-      <option value="">Elija vendedor</option>
-
-      {{#each vendedorList}}
-        <option value="{{this._id}}">{{this.name}}</option>
-      {{/each}}
-
-        </select>
-        <br>
-        <label for="image">Imagen de producto</label>
-        <input type="file" name="image">
-
-        <button>Editar</button>
-
-  </form>
-  <form action="/product/{{detallesProducto._id}}/delete" method="POST"><button
-    >Borrar</button></form>
+    <form action="/product/create" method="POST" enctype="multipart/form-data">
+      <div class="col">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre:</label>
+          <input type="text" name="name" value="{{detallesProducto.name}}" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripción:</label>
+          <input type="text" name="description" value="{{detallesProducto.description}}" class="form-control"
+            id="description">
+        </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Categoría:</label>
+          <select name="category" value="{{detallesProducto.category}}" class="form-select"
+            aria-label="Default select example">
+            <option selected>Elije una categoría</option>
+            <option value="maquillaje">Maquillaje</option>
+            <option value="ropa">Ropa</option>
+            <option value="cuidado-de-la-piel">Cuidado de la piel</option>
+            <option value="estilo-de-vida">Estilo de vida</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="supplier" class="form-label">Vendedor:</label>
+          <select name="supplier" multiple="true" class="form-select">
+            {{#each vendedorList}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Imagen de producto</label>
+          <input name="image" class="form-control form-control-sm" id="formFileSm" type="file">
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+          <button class="btn btn-primary">Guardar</button>
+          <form action="/product/{{detallesProducto._id}}/delete" method="POST"><button
+              class="btn btn-primary">Borrar</button>
+          </form>
+        </div>
+      </div>
+    </form>
 </div>

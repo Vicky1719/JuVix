@@ -1,21 +1,27 @@
 <div>
 
-  <h3>Formulario de Editar</h3>
-
+  <h3>EDITAR TIENDA</h3>
   <form action="/supplier/{{supplierDetails._id}}/edit" method="POST">
-
-    <label for="name">Nombre:</label>
-    <input type="text" name="name" value="{{supplierDetails.name}}" />
-    <br />
-    <label for="location">Ubicación:</label>
-    <input type="text" name="location" value="{{supplierDetails.location}}" />
-
-    <p style="color: rgb(60, 11, 151)">{{errorMessage}}</p>
-
-    <button>Editar</button>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="name" value="{{supplierDetails.name}}" class="form-control" aria-label="Nombre">
+      </div>
+      <div class="col">
+        <input type="text" name="location" value="{{supplierDetails.location}}" class="form-control"
+          aria-label="Ubicación">
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-primary">Guardar</button>
+        <form action="/supplier/{{supplierDetails._id}}/delete" method="POST"><button
+            class="btn btn-primary">Borrar</button>
+        </form>
+      </div>
+    </div>
 
   </form>
-  <form action="/supplier/{{supplierDetails._id}}/delete" method="POST"><button
-    >Borrar</button></form>
+
+</div>
+
+
 
 </div>
