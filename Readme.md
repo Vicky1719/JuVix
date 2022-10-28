@@ -83,4 +83,4 @@ redirigiéndonos a sus respectivas páginas para adquirirlo.
 
 ### Diapositivas
 
-[Enlace]()
+[Enlace](https://www.canva.com/design/DAFQUnnKGRI/8eeynoPhjPC2_Xaqk4C8wA/view?utm_content=DAFQUnnKGRI&utm_campaign=designshare&utm_medium=link&utm_source=publishpresent)
